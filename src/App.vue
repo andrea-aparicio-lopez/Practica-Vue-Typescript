@@ -1,10 +1,28 @@
 <template>
-  <nav>
+  <!-- <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </nav>
-  <router-view/>
+  <router-view/> -->
+
+  <NavBar/>
+  <!-- <HomeView></HomeView> -->
+  <router-view></router-view>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import NavBar from './components/NavBar.vue';
+import HomeView from './views/HomeView.vue';
+
+export default defineComponent({
+  name: 'AppComponent',
+  components: {
+    NavBar,
+    // HomeView,
+  }
+})
+</script>
 
 <style>
 #app {
@@ -15,16 +33,8 @@
   color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
+body {
+  margin: 0;
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>

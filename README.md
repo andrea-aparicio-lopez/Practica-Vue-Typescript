@@ -1,4 +1,4 @@
-# practica
+# Práctica Vue y TypeScript
 
 ## Project setup
 ```

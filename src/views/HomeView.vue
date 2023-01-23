@@ -1,18 +1,21 @@
 <template>
-  <div class="home">
+  <!-- <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+  </div> -->
+  <h2>Bienvenido a Fake Shop!</h2>
+  <h4>Una tienda ficticia donde podrás navegar, encontrar productos y añadirlos a la cesta</h4>
+  <!-- <p v-if="!loggedIn">Inicia sesión o regístrate para comenzar</p> -->
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+// import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 
 export default defineComponent({
   name: 'HomeView',
   components: {
-    HelloWorld,
+    // HelloWorld,
   },
 });
 </script>
