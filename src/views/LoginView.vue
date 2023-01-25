@@ -5,9 +5,9 @@
             <form action="post">
                 <input class="email" type="email" placeholder="Correo electrónico" required>
                 <input class="password" type="password" placeholder="Contraseña" required>
+                <button type="submit">Acceder</button>
             </form>
         </div>
-        <button type="submit">Acceder</button>
     </div>
 
 </template>
@@ -26,20 +26,27 @@ export default defineComponent({
 .login-box {
     margin: auto;
     margin-top: 100px;
-    height: 400px;
+    height: 350px;
     width: 500px;
     border: 2px solid rgb(88, 67, 190);
     padding: 100px 0 100px 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
+    row-gap: 75px;
     align-items: center;
 }
 
 input {
-    width: 70%;
+    width: 250px;
     border-radius: 5px;
     padding: 5px;
+    margin: 5px;
 }
 
+.inputs form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 </style>
