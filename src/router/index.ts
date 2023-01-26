@@ -31,6 +31,10 @@ const routes: Array<RouteRecordRaw> = [
     path: '/detail/:id',
     name: 'detail',
     component: DetailView,
+    props: (route) => {
+      const id = Number(route.params.id)
+      return isNaN(id) ? { id: null } : { id }
+    }
   },
 ]
 

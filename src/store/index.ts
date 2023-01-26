@@ -12,7 +12,7 @@ export default createStore<IState>({
     authUser: null,
   },
   getters: {
-    profile(state) {
+    userProfile(state) {
       return state.authUser
     }
   },
