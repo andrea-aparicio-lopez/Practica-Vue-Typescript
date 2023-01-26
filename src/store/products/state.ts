@@ -5,7 +5,7 @@ export interface IProductsState {
     products: Product[];
     isLoading: boolean;
     selectedProduct: Product | null;
-};
+}
 
 function state(): IProductsState {
     return {
