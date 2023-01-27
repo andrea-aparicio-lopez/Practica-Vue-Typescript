@@ -81,6 +81,8 @@ export default defineComponent({
     align-self: end;
     justify-self: center;
     padding: 0.5rem 0 0.5rem 0;
+    /* margin-top: auto; */
+    /* padding: 0rem 0 0.5rem 0; */
     font-weight: bold;
 }
 

@@ -83,11 +83,16 @@ button:hover {
 .product-list {
     max-width: 90%;
     margin: auto;
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: stretch;
+    flex: 1;
+    justify-content: space-between; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 350px);
+    /* grid-auto-flow: row; */
+    justify-content: center;
+    gap: 1rem
 }
 
 

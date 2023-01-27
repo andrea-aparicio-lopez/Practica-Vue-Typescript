@@ -25,7 +25,7 @@ import { IProductsState } from "./state";
         const { data } = await fakeShopApi.get<unknown, AxiosResponse<Product>>(`/products/${productId}`);
 
         commit('setIsLoading', false);
-        commit('selectedProduct', data); 
+        commit('setSelectedProduct', data); 
     }
  }
 

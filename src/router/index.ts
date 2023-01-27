@@ -28,7 +28,7 @@ const routes: Array<RouteRecordRaw> = [
     component: LoginView,
   },
   {
-    path: '/detail/:id',
+    path: '/products/:id',
     name: 'detail',
     component: DetailView,
     props: (route) => {
@@ -36,6 +36,10 @@ const routes: Array<RouteRecordRaw> = [
       return isNaN(id) ? { id: null } : { id }
     }
   },
+  // {
+  //   path: '/:pathMatch(.*)',
+  //   component: () => import('../views/NotFoundView.vue'),
+  // }
 ]
 
 const router = createRouter({
