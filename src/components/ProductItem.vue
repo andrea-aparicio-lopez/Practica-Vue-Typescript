@@ -59,14 +59,16 @@ export default defineComponent({
 
 .image {
     grid-area: img;
-    /* height: max-content; */
-    /* width: max-content; */
 }
 .image > img {
-    width: 150px;
-    height: auto;
+    width: 175px;
+    /* width: 150px; */
+    height: 150px;
+    object-fit: cover;
+    /* height: auto; */
     padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-    border-radius: 10px;
+    border-radius: 15px;
+    justify-self: left;
 }
 
 .description {

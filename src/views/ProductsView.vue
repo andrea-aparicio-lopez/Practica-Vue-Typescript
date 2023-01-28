@@ -41,7 +41,7 @@ export default defineComponent({
     },
     // computed: {
     //     limitProducts() {
-    //         return limit  
+    //          
     //     }
     // },
     setup() {
@@ -83,11 +83,6 @@ button:hover {
 .product-list {
     max-width: 90%;
     margin: auto;
-    /* display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    flex: 1;
-    justify-content: space-between; */
     display: grid;
     grid-template-columns: repeat(auto-fill, 350px);
     /* grid-auto-flow: row; */

@@ -4,6 +4,7 @@ import ProductsView from '../views/ProductsView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import LoginView from '../views/LoginView.vue'
 import DetailView from '../views/DetailView.vue'
+import haveAuthGuard from './auth-guard'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -14,12 +15,14 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/products',
     name: 'products',
+    beforeEnter: [haveAuthGuard],
     // component: () => import(/* webpackChunkName: "products" */ '../views/ProductsView.vue')
     component: ProductsView,
   },
   {
     path: '/profile',
     name: 'profile',
+    beforeEnter: [haveAuthGuard],
     component: ProfileView,
   },
   {
@@ -30,16 +33,17 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/products/:id',
     name: 'detail',
+    beforeEnter: [haveAuthGuard],
     component: DetailView,
     props: (route) => {
       const id = Number(route.params.id)
       return isNaN(id) ? { id: null } : { id }
     }
   },
-  // {
-  //   path: '/:pathMatch(.*)',
-  //   component: () => import('../views/NotFoundView.vue'),
-  // }
+  {
+    path: '/:pathMatch(.*)',
+    component: () => import('../views/NotFoundView.vue'),
+  },
 ]
 
 const router = createRouter({
