@@ -4,30 +4,66 @@
         <div class="login-data">
             <form v-on:submit.prevent="login" action="post">
                 <input class="email" type="email" placeholder="Correo electrónico" v-model="email" required>
-                <input class="password" type="password" placeholder="Contraseña" required>
+                <input class="password" type="password" placeholder="Contraseña" v-model="password" required>
                 <button type="submit">Acceder</button>
             </form>
         </div>
+        <div class="error-alert" v-if="error">{{ error_msg }}</div>
     </div>
 
 </template>
 
 <script lang="ts">
 import router from '@/router';
-import login from '@/router/login';
+import logIn from '@/router/login';
+import axios from 'axios';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
     name: 'LoginView',
-    components: {
-        login
+    // components: {
+    //     login
+    // },
+    // setup() {
+    //     logIn(this.email, this.password)
+    // },
+    data() {
+        return {
+            email: '',
+            password: '',
+            error: false,
+            error_msg: '',
+        }
     },
     methods: {
-        // if(login) {
-        //     router.push({ name: 'products' })
-        // },
-        return: {
-            login(email: string, password: string)
+        async login() {
+            let data = {
+                "email": this.email,
+                "password": this.password
+            }
+            try {
+                const response = await axios.post('https://api.escuelajs.co/api/v1/auth/login', data)
+                console.log(response)
+                localStorage.setItem('accessToken', response.data.access_token)    
+                console.log('Se ha guardado el token:', response.data.access_token )
+
+                router.push({ name: 'products'})
+            } catch(err) {
+                console.log(err);
+                this.error = true;
+                this.error_msg = `${err}`
+            }
+
+            // axios.post('https://api.escuelajs.co/api/v1/auth/login', data).then((response) => {
+            //     console.log(response)
+            //     if(response.data.statusCode === 200) {
+            //         localStorage.setItem('accessToken', response.data.access_token)    
+            //         console.log('Se ha guardado el token:', response.data.access_token )
+            //     }else {
+            //         this.error = true;
+            //         this.error_msg = response.data.message;
+            //     }
+            // })
         }
     }
 

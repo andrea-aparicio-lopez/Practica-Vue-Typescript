@@ -10,7 +10,6 @@ const logIn = async (email: string, password: string) => {
     localStorage.setItem('accessToken', response.data.access_token)
     
     console.log('Se ha guardado el token:', response.data.access_token )
-    return true
 }
 
 export default logIn
