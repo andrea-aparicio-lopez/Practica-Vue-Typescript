@@ -15,18 +15,12 @@
 
 <script lang="ts">
 import router from '@/router';
-import logIn from '@/router/login';
+// import logIn from '@/router/login';
 import axios from 'axios';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
     name: 'LoginView',
-    // components: {
-    //     login
-    // },
-    // setup() {
-    //     logIn(this.email, this.password)
-    // },
     data() {
         return {
             email: '',
@@ -47,7 +41,7 @@ export default defineComponent({
                 localStorage.setItem('accessToken', response.data.access_token)    
                 console.log('Se ha guardado el token:', response.data.access_token )
 
-                router.push({ name: 'products'})
+                router.push({ name: 'products' })
             } catch(err) {
                 console.log(err);
                 this.error = true;
@@ -75,7 +69,7 @@ export default defineComponent({
 <style scoped>
 .login-box {
     margin: auto;
-    margin-top: 100px;
+    margin-top: 40px;
     height: 350px;
     width: 500px;
     border: 2px solid rgb(88, 67, 190);
@@ -98,5 +92,11 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.error-alert {
+    background-color: rgb(249, 158, 158);
+    color: white;
+    padding: 1rem;
 }
 </style>

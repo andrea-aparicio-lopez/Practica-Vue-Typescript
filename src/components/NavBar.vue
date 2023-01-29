@@ -15,7 +15,8 @@
             </ul>
         </div>
         <div class="logout">
-            <button>
+            <button @click="logout" >
+            <!-- <button @click="logout" v-if="logedIn"> -->
                 Cerrar sesión
                 <!-- <span>Log out icon</span> -->
             </button>
@@ -24,11 +25,29 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import router from '@/router';
+import { defineComponent, ref } from 'vue';
+import { RouterLink } from 'vue-router';
 
 
 export default defineComponent({
     name: 'NavBar',
+    setup() {
+        let logedIn = ref<boolean>(false) 
+        const token = localStorage.getItem('accesToken')
+        if(token) {
+            logedIn = ref<boolean>(true)
+        }
+
+        return {
+            logedIn,
+            logout: () => {
+                localStorage.removeItem('accessToken')
+                router.push({ name: 'home' })
+            }
+        }
+    },
+
 })
 </script>
 
@@ -47,6 +66,7 @@ ul {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    /* justify-self: center; */
     list-style: none;
 }
 
@@ -72,6 +92,10 @@ a:hover {
 
 .home-page a:hover {
     color: white;
+}
+
+.logout {
+    width: max-content;
 }
 </style>
 
