@@ -27,7 +27,7 @@
 
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
 import ProductItem from '@/components/ProductItem.vue';
 import useProducts from '@/composables/useProducts';
 import { useRouter } from 'vue-router';

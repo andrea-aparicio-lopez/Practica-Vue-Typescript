@@ -1,10 +1,12 @@
 <template>
-    <div class="loading" v-if="isLoading">Cargando...</div>
-    <div class="profile" v-else>
-        <UserProfile 
-        :key="user.id"
-        :user="user"
-        />
+    <div class="body">
+        <div class="loading" v-if="isLoading">Cargando...</div>
+        <div class="profile" v-else>
+            <UserProfile 
+            :key="user.id"
+            :user="user"
+            />
+        </div>
     </div>
 </template>
 
@@ -35,13 +37,15 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.user-info {
-    width: 400px;
-    height: 300px;
-    border: 3px solid rgb(88, 67, 190);
-    border-radius: 15px;
+.body {
+    background-color: rgb(236, 239, 241);
+    height: 100vh;
+    display: flex;
+}
+
+.profile {
     margin: auto;
-    margin-top: 100px;
+    margin-top: 30px;
 }
 
 </style>

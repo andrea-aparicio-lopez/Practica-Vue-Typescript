@@ -5,11 +5,11 @@
         <div class="loading" v-if="isLoading">Cargando...</div>
         <div class="product" v-else>
             <div class="slider">
-                <div class="slider-controls">
+                <!-- <div class="slider-controls">
                     <a href="#" v-for="n in product.images.length" :key="n">{{ n }}</a>
-                </div>
+                </div> -->
                 <div class="slider-content" v-for="(image, index) in product.images" :key="index" :style="`background-image: url(${image})`">
-                    <img :src="product.images[index]" alt="">
+                    <img :src="product.images[index]" :alt="product.title">
                 </div>
             </div>
             <div class="product-info">
@@ -68,13 +68,11 @@ export default defineComponent({
 }
 
 .slider {
-    /* height: 20rem; */
     position: relative;
-    transform: translateZ(0);
     height: auto;
     max-height: 30rem;
     width: 90%;
-    background-size: contain;
+    /* background-size: cover; */
     overflow: scroll;
     align-self: center;
     scroll-snap-type: y mandatory;
@@ -82,17 +80,19 @@ export default defineComponent({
     grid-auto-flow: row;
 }
 
-.slider-controls {
+/* Controles de botón para pasar las imágenes */
+/* .slider-controls {
     position: fixed;
     right: 0;
     top: 0;
     width: 1rem;
     height: 100%;
     background: goldenrod;
-}
+} */
 .slider-content {
     /* height: 20rem; */
     background-position: center;
+    background-size: cover;
     scroll-snap-align: center;
 }
 
