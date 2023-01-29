@@ -97,5 +97,9 @@ a:hover {
 .logout {
     width: max-content;
 }
+
+.logout button:hover {
+    cursor: pointer;
+}
 </style>
 

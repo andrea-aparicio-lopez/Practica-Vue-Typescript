@@ -1,14 +1,36 @@
 <template>
-    <div class="user-info">
-        <h2>Aquí se mostrará la información del perfil</h2>
+    <div class="loading" v-if="isLoading">Cargando...</div>
+    <div class="profile" v-else>
+        <UserProfile 
+        :key="user.id"
+        :user="user"
+        />
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import UserProfile from '@/components/UserProfile.vue';
+import user from '@/store/user';
+import useUser from '@/composables/useUser';
+
+// import { useRouter } from 'vue-router';
 
 export default defineComponent({
     name: 'ProfileView',
+    components: {
+        UserProfile,
+    },
+    setup() {
+        const { user, isLoading, fetchUser } = useUser();
+        // const router = useRouter()
+        fetchUser();
+        console.log("Pasa por setup()",user.value);
+        return {
+            user,
+            isLoading,
+        }
+    }
 })
 
 </script>
