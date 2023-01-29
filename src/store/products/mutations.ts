@@ -11,8 +11,11 @@ const mutations: MutationTree<IProductsState> = {
         state.isLoading = value;
     },
     setSelectedProduct(state: IProductsState, product: Product) {
-        state.selectedProduct = product
+        state.selectedProduct = product;
     },
+    setFilteredProducts(state: IProductsState, filteredProducts: Product[]) {
+        state.products = filteredProducts;
+    }
 };
 
 export default mutations;

@@ -1,7 +1,7 @@
 <template>
     <div class="search">
-        <input type="text" placeholder="Búsqueda de productos">
-        <button class="search-button">
+        <input type="text" placeholder="Búsqueda de productos" v-model="searchInput">
+        <button class="search-button" @click="search(searchInput)">
             <svg    class="bi bi-search-heart" viewBox="0 0 16 16">
             <path d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018Z"/>
             <path d="M13 6.5a6.471 6.471 0 0 1-1.258 3.844c.04.03.078.062.115.098l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1.007 1.007 0 0 1-.1-.115h.002A6.5 6.5 0 1 1 13 6.5ZM6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z"/>
@@ -27,34 +27,34 @@
 
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import ProductItem from '@/components/ProductItem.vue';
 import useProducts from '@/composables/useProducts';
-import products from '@/store/products';
 import { useRouter } from 'vue-router';
 import { Product } from '@/models/product';
+// import router from '@/router';
+// import axios from 'axios';
 
 export default defineComponent({
     name: 'ProductsView',
     components: {
         ProductItem
     },
-    // computed: {
-    //     limitProducts() {
-    //          
-    //     }
-    // },
     setup() {
-        const { products, fetchProducts, isLoading } = useProducts();
+        const { products, fetchProducts, fetchFilteredProducts, isLoading } = useProducts();
         const router = useRouter();
-
+        
+        let searchInput = ''
         fetchProducts();
-
+        
         return {
             products,
-            // limit: 10, 
+            searchInput,
             isLoading,
-            goDetail: (product: Product) => {router.push({name: 'detail', params: {id: product.id}})}
+            goDetail: (product: Product) => {router.push({name: 'detail', params: {id: product.id}})},
+
+            search: (searchInput: string) => searchInput.length > 2 ? fetchFilteredProducts(searchInput) : fetchProducts()
+
         };
 
     }

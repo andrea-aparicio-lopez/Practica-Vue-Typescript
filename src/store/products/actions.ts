@@ -12,7 +12,8 @@ import { IProductsState } from "./state";
     async fetchProducts({commit}) {
         commit("setIsLoading", true);
 
-        const { data } = await fakeShopApi.get<unknown, AxiosResponse<Product[]>>('/products/');
+        console.log('por aqui pasa')
+        const { data } = await fakeShopApi.get<unknown, AxiosResponse<Product[]>>('/products');
 
         commit('setIsLoading', false);
         commit('setProducts', data)
@@ -26,7 +27,18 @@ import { IProductsState } from "./state";
 
         commit('setIsLoading', false);
         commit('setSelectedProduct', data); 
+    },
+
+    // Obtener productos filtrando por título
+    async fetchFilteredProducts({commit}, filter: string) {
+        commit('setIsLoading', true)
+
+        const { data } = await fakeShopApi.get<unknown, AxiosResponse<Product[]>>(`/products?title=${filter.trim().toLowerCase()}`)
+
+        commit('setIsLoading', false)
+        commit('setFilteredProducts', data)
     }
+
  }
 
  export default actions;
